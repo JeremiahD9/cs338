@@ -1,0 +1,62 @@
+Level 0 → Level 1
+Solution: cat readme
+Lesson: Teaches how to read files through the terminal
+Password: ZjLjTmM6FvvyRnrb2rfNWOZOTa6ip5If
+
+Bandit Level 1 → Level 2
+Solution: cat < -
+Lesson: Teaches how to open a dashed filename using the terminal
+Password: 263JGJPfgU6LtdEvgfWU1XP5yac29mFx 
+
+Bandit Level 2 → Level 3
+Solution: cat "spaces in this filename"
+Lesson:	Teaches how to open a filename with spaces using the terminal
+Password: MNk8KNH3Usiio41PRUEoDFPqfxLPlSmx
+
+Bandit Level 3 → Level 4
+Solution: cd inhere -> ls -a -> cat ...Hiding-From-You
+Lesson: Teaches how to find and navigate to hidden files
+Password: 2WmrDFRmJIq3IPxneAaMGhap0pFhF3NJ
+
+Bandit Level 4 → Level 5
+Solution: cd inhere -> file ./* -> cat ./-file07
+Lesson: Teaches you how to analyze the types of file in the directory
+Password: 4oQYVPkxZOOEOO5pTW81FB8j8lxXGUQw
+
+Bandit Level 5 → Level 6
+Solution: cd inhere -> du -a -b ./* -> Scroll through until you find the file with 1300 bytes (./maybehere07/.file2) -> ls -a -> cat .file2
+Lesson: Teaches you how to filter files by file size and other attributes
+Password: HWasnPhtq9AVKe0dmk45nxy20cvUa6EG
+
+Bandit Level 6 → Level 7
+Solution: cd .. -> cd .. -> find / -user bandit7 -group bandit6 2>/dev/null -> cd /var/lib/dpkg/info -> cat bandit7.password
+Lesson: Teaches you how to use the find function to locate a file based on the user and group name its stored under
+Password: morbNTDkSW6jIlUc0ymOdMaLnOlFVAaj
+
+Bandit Level 7 → Level 8
+Solution: grep -w millionth data.txt
+Lesson: Teaches you search specific elements in a list
+Password: dfwvzFQi4mU0wfNbFOe9RoWskMLg7eEc
+
+Bandit Level 8 → Level 9
+Solution: sort -R data.txt -> Search for the code that isn't grouped with anything else
+Lesson: Teaches how to sort through a list with duplicates
+Password: 4CKMh1JI91bUIZZPXDqGanal4xvAg0JM
+
+Bandit Level 9 → Level 10
+Solution: strings data.txt -> Search for the passcode by looking at all the items that are next to several equal signs
+Lesson: Teaches how to reveal only readable characters from a list
+Password: FGUW5ilLVJrxX9kMYMmlN4MgbpfMiqey
+
+Bandit Level 10 → Level 11
+Solution: base64 -d data.txt
+Lesson: Teaches how to decode base64 text.
+Password: dtR173fZKb0RRsDFSGsg2RWnpNVj3qRr
+
+Bandit Level 11 → Level 12
+Solution: cat data.txt | tr 'a-zA-Z' 'n-za-mN-ZA-M'
+Lesson: Teaches how to translate characters in a string
+Password:7x16WNeHIi5YkIhWsfFIqoognUTyj9Q4
+
+
+
