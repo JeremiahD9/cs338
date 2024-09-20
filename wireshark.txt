@@ -20,5 +20,16 @@ Jeremiah Dawson
 ===== HTTP =====
 Correct Filter: host 172.233.221.124
 1) 44 TCP connections were opened. I can tell by checking the number value of the last entry recorded by Wireshark
+
 2) 9	0.034105022	192.168.199.128	172.233.221.124	TLSv1.3	571	Client Hello (SNI=cs338.jeffondich.com). This appears to be the client attempting to retrieve a response from the webpage
+
 3) I can't tell where the photograph is being requested. The information displayed by Wireshark doesn't appear specific enough for me to pinpoint frame.
+
+===== QUESTIONS =====
+1) What do the different versions of TLC stand for and what do they do?
+
+2) What does change cipher spec, application data mean?
+
+3) Can you explain why it appears that some frames are duplicates?
+
+4) Can you go more into depth of what the frames Client Hello and Server Hello do, how do they differ from [SYN]
