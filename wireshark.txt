@@ -1,0 +1,24 @@
+Jeremiah Dawson
+
+===== DAYTIME =====
+1) 
+1 192.168.199.128 129.6.15.29 TCP [SYN]...
+2 129.6.15.29 192.168.199.128 TCP [SYN, ACK]...
+3 192.168.199.128 129.6.15.29 TCP [ACK]...
+
+2) Port number 13
+
+3) So that the server knows where to deliver the IP Packet
+
+4) 4 129.6.15.29 192.168.199.128 DAYTIME...
+
+5) [SYN] establish communication between machines. [ACK] acknowledges that the message was received.
+
+6) The client initiated the closing of the TCP connection. This can be confirmed by seeing which machine sent the [FIN] package first.
+
+
+===== HTTP =====
+Correct Filter: host 172.233.221.124
+1) 44 TCP connections were opened. I can tell by checking the number value of the last entry recorded by Wireshark
+2) 9	0.034105022	192.168.199.128	172.233.221.124	TLSv1.3	571	Client Hello (SNI=cs338.jeffondich.com). This appears to be the client attempting to retrieve a response from the webpage
+3) I can't tell where the photograph is being requested. The information displayed by Wireshark doesn't appear specific enough for me to pinpoint frame.
