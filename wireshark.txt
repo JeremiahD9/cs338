@@ -19,11 +19,11 @@ Jeremiah Dawson
 
 ===== HTTP =====
 Correct Filter: host 172.233.221.124
-1) 44 TCP connections were opened. I can tell by checking the number value of the last entry recorded by Wireshark
+1) Around 230 TCP connections were created. I can tell by checking the number value of the last entry recorded by Wireshark
 
-2) 9	0.034105022	192.168.199.128	172.233.221.124	TLSv1.3	571	Client Hello (SNI=cs338.jeffondich.com). This appears to be the client attempting to retrieve a response from the webpage
+2) 7 192.168.199.128 172.233.221.124 HTTP 491 GET /index.html HTTP/1.1... . This appears to be the client creating a GET HTTP request to retrieve index.html
 
-3) I can't tell where the photograph is being requested. The information displayed by Wireshark doesn't appear specific enough for me to pinpoint frame.
+3) 11 192.168.199.128 172.233.221.124 HTTP 381 GET /jeff-square-colorado.jpg HTTP/1.1. This appears to be the client creating a GET HTTP request for the image /jeff-square-colorado.jpg
 
 ===== QUESTIONS =====
 1) What do the different versions of TLC stand for and what do they do?
