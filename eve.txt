@@ -1,0 +1,132 @@
+What you (Eve) intercepted for Diffie Hellman
+
+Figure out the shared secret agreed upon by Alice and Bob. This will be an integer.
+
+g = 7 and p = 97
+
+Alice: send A = gX mod p to Bob.
+Bob: send B = gY mod p to Alice.
+
+Alice sent Bob the number 53.
+Bob sent Alice the number 82.
+
+
+In this step below, if my integers were much larger the process would've failed because the range for the loop
+would've grown to large
+Alice: 
+53 = 7X mod 97 -> 
+---
+for k in range(100):
+...     if 7 * k % 97 == 53:
+...             print(f'X = {k}')
+...
+X = 63 
+
+
+Bob:
+82 = 7Y mod 97 ->
+---
+>>> for k in range(100):
+...     if 7 * k % 97 == 82:
+...             print(f'Y = {k}')
+...
+Y = 81
+
+Alice: compute BX mod p. That's your shared secret.
+Bob: compute AY mod p. That's your shared secret.
+
+Alice: 82 * 63 % 97 = 25
+Bob: 53 * 81 % 97 = 25
+
+Process Failed: If the integers were too large the X and Y value would be near impossible to compute because of the amount of for loop iterations that would be necessary to retrieve the value.
+<---------------------->
+
+What you, Eve, intercepted for RSA
+Bob's public key: (e_Bob, n_Bob) = (13, 162991)
+
+Encrypted Data:
+[17645, 100861, 96754, 160977, 120780, 90338, 130962, 74096,
+128123, 25052, 119569, 39404, 6697, 82550, 126667, 151824,
+80067, 75272, 72641, 43884, 5579, 29857, 33449, 46274,
+59283, 109287, 22623, 84902, 6161, 109039, 75094, 56614,
+13649, 120780, 133707, 66992, 128221]
+
+(dB, nB)  secret -> (dB, 162991)
+
+nB = pBqB
+
+----------
+>>> from sympy import factorint
+>>> n_Bob = 162991
+>>> factors = factorint(n_Bob)
+>>> print(factors)
+{389: 1, 419: 1}
+--------
+
+pB = 389, qB = 419
+
+λ(nB) = lcm(pB - 1, qB - 1) = 81092
+
+eBdB mod λ(nB) = 1 -> 13(dB) mod(81092) = 1
+
+dB = 43665
+
+ydB mod nB
+---------------
+>>> for num in list:
+...     print(num ** 43665 % 162991)
+
+Decrypted Data (Base 10) =
+[ 17509, 24946, 8258, 28514, 11296, 25448, 25955, 27424, 29800, 26995,
+  8303, 30068, 11808, 26740, 29808, 29498, 12079, 30583, 30510, 29557,
+  29302, 25961, 27756, 24942, 25445, 30561, 29795, 26670, 26991, 12064,
+  21349, 25888, 31073, 11296, 16748, 26979, 25902];
+
+----------
+for num in list:
+...     print(hex(num))
+
+Hex Data = 
+   [0x4465, 0x6172, 0x2042, 0x6f62, 0x2c20, 0x6368, 0x6563, 0x6b20, 0x7468,
+    0x6973, 0x206f, 0x7574, 0x2e20, 0x6874, 0x7470, 0x733a, 0x2f2f, 0x7777,
+    0x772e, 0x7375, 0x7276, 0x6569, 0x6c6c, 0x616e, 0x6365, 0x7761, 0x7463,
+    0x682e, 0x696f, 0x2f20, 0x5365, 0x6520, 0x7961, 0x2c20, 0x416c, 0x6963,
+    0x652e]
+-------------
+# List of multi-byte hex values
+>>> hex_values = [
+...     0x4465, 0x6172, 0x2042, 0x6f62, 0x2c20, 0x6368,
+...     0x6563, 0x6b20, 0x7468, 0x6973, 0x206f, 0x7574,
+...     0x2e20, 0x6874, 0x7470, 0x733a, 0x2f2f, 0x7777,
+...     0x772e, 0x7375, 0x7276, 0x6569, 0x6c6c, 0x616e,
+...     0x6365, 0x7761, 0x7463, 0x682e, 0x696f, 0x2f20,
+...     0x5365, 0x6520, 0x7961, 0x2c20, 0x416c, 0x6963,
+...     0x652e
+... ]
+>>>
+>>> # Convert hex values to ASCII string
+>>> ascii_strings = []
+>>>
+>>> for hex_value in hex_values:
+...     # Convert the hex value to bytes
+...     byte_value = hex_value.to_bytes(2, byteorder='big')  # Assuming 2 bytes for each hex value
+...     # Decode the bytes to an ASCII string
+...     ascii_string = byte_value.decode('ascii')
+...     ascii_strings.append(ascii_string)
+...
+>>> # Join all ASCII characters to form the final string
+>>> final_ascii_string = ''.join(ascii_strings)
+>>>
+>>> print(final_ascii_string)
+
+Message:
+Dear Bob, check this out. https://www.surveillancewatch.io/ See ya, Alice.
+
+Encoding Explanation: Alice converted her original plain text message into ASCII values, then converted the ASCII
+values into Hex values, then converted those Hex Values to Base 10, and finally encoded the base 10 values using Bob's
+public key.
+
+Process Failed: If the n value was too large, the process of finding the p and q value would've failed because their 
+prime factors would be too big, meaning longer amounts of time in computation would be needed. Additionally, with a larger number there's a greater chance of their being multiple factors of p and q. 
+
+Insecurity: The security of messages are based on a variety of factors, such as key management, mathematical functions, and complexity. Though it is possible for the security of the message to be raised through larger integers, it is not exactly guaranteed if the other factors mentioned are properly accounted for. 
