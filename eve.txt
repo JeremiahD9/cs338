@@ -122,9 +122,8 @@ Hex Data =
 Message:
 Dear Bob, check this out. https://www.surveillancewatch.io/ See ya, Alice.
 
-Encoding Explanation: Alice converted her original plain text message into ASCII values, then converted the ASCII
-values into Hex values, then converted those Hex Values to Base 10, and finally encoded the base 10 values using Bob's
-public key.
+Encoding Explanation: Alice converted her original plain text message into ASCII values, then encoded the ASCII
+values using basic hex and base 10 encoding.
 
 Process Failed: If the n value was too large, the process of finding the p and q value would've failed because their 
 prime factors would be too big, meaning longer amounts of time in computation would be needed. Additionally, with a larger number there's a greater chance of their being multiple factors of p and q. 
